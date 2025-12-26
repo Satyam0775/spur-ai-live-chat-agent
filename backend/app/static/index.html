@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Spur Chat Assistant</title>
 
-  <!-- Google Font -->
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,42 +13,46 @@
 </head>
 <body>
 
-  <header class="top-bar">
-    <div class="brand">
-      ✨ Spur Chat Assistant
-      <span>Your E-commerce Support AI</span>
+<header class="top-bar">
+  <div class="brand">
+    ✨ Spur Chat Assistant
+    <span>Your E-commerce Support AI</span>
+  </div>
+  <button class="new-chat" onclick="resetChat()">+ New Chat</button>
+</header>
+
+<main class="container">
+
+  <!-- Welcome Section -->
+  <section class="welcome" id="welcome">
+    <h1>Welcome to Spur Store</h1>
+    <p>Ask me anything about orders, shipping, returns, or payments.</p>
+
+    <div class="suggestions">
+      <button onclick="quickSend(this)">How do I track my order?</button>
+      <button onclick="quickSend(this)">What's your return policy?</button>
+      <button onclick="quickSend(this)">Do you ship internationally?</button>
+      <button onclick="quickSend(this)">How can I cancel my order?</button>
     </div>
-    <button class="new-chat" onclick="resetChat()">+ New Chat</button>
-  </header>
+  </section>
 
-  <main class="container">
-    <section class="welcome">
-      <h1>Welcome to Spur Store</h1>
-      <p>Ask me anything about orders, shipping, returns, or payments.</p>
+  <!-- Chat Section -->
+  <section class="chat-card" id="chat-card">
+    <div id="chat-box"></div>
+  </section>
 
-      <div class="suggestions">
-        <button onclick="quickSend(this)">How do I track my order?</button>
-        <button onclick="quickSend(this)">What's your return policy?</button>
-        <button onclick="quickSend(this)">Do you ship internationally?</button>
-        <button onclick="quickSend(this)">How can I cancel my order?</button>
-      </div>
-    </section>
+</main>
 
-    <section class="chat-card">
-      <div id="chat-box"></div>
+<footer class="input-bar">
+  <input
+    type="text"
+    id="message-input"
+    placeholder="Type your message..."
+    onkeydown="handleEnter(event)"
+  />
+  <button onclick="sendMessage()">➤</button>
+</footer>
 
-      <div class="input-box">
-        <input
-          type="text"
-          id="message-input"
-          placeholder="Type your message..."
-          onkeydown="handleEnter(event)"
-        />
-        <button onclick="sendMessage()">➤</button>
-      </div>
-    </section>
-  </main>
-
-  <script src="/static/app.js"></script>
+<script src="/static/app.js"></script>
 </body>
 </html>
