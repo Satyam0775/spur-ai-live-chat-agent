@@ -1,10 +1,12 @@
 let sessionId = null;
 
-async function sendMessage(messageText) {
+async function sendMessage(text = null) {
   const input = document.getElementById("message-input");
-  const message = messageText || input.value.trim();
-
+  const message = text || input.value.trim();
   if (!message) return;
+
+  document.getElementById("welcome").style.display = "none";
+  document.getElementById("chat-card").style.display = "block";
 
   appendMessage("user", message);
   input.value = "";
@@ -33,8 +35,8 @@ function appendMessage(sender, text) {
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-function handleEnter(event) {
-  if (event.key === "Enter") sendMessage();
+function handleEnter(e) {
+  if (e.key === "Enter") sendMessage();
 }
 
 function quickSend(btn) {
@@ -44,4 +46,6 @@ function quickSend(btn) {
 function resetChat() {
   sessionId = null;
   document.getElementById("chat-box").innerHTML = "";
+  document.getElementById("chat-card").style.display = "none";
+  document.getElementById("welcome").style.display = "block";
 }
