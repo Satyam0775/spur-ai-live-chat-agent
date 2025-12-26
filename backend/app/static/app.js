@@ -1,8 +1,8 @@
 let sessionId = null;
 
-async function sendMessage() {
+async function sendMessage(messageText) {
   const input = document.getElementById("message-input");
-  const message = input.value.trim();
+  const message = messageText || input.value.trim();
 
   if (!message) return;
 
@@ -12,21 +12,15 @@ async function sendMessage() {
   try {
     const response = await fetch("/chat/message", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message: message,
-        sessionId: sessionId
-      })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message, sessionId })
     });
 
     const data = await response.json();
     sessionId = data.sessionId;
-
     appendMessage("ai", data.reply);
-  } catch (error) {
-    appendMessage("ai", "Sorry, something went wrong. Please try again.");
+  } catch {
+    appendMessage("ai", "Sorry, something went wrong.");
   }
 }
 
@@ -40,7 +34,14 @@ function appendMessage(sender, text) {
 }
 
 function handleEnter(event) {
-  if (event.key === "Enter") {
-    sendMessage();
-  }
+  if (event.key === "Enter") sendMessage();
+}
+
+function quickSend(btn) {
+  sendMessage(btn.innerText);
+}
+
+function resetChat() {
+  sessionId = null;
+  document.getElementById("chat-box").innerHTML = "";
 }
