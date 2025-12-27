@@ -5,7 +5,7 @@ This project is a mini AI-powered customer support chat application built as par
 It simulates a live chat widget where users can ask questions and receive contextual responses from an AI support agent using a real LLM API.
 
 **Deployed Project Link:**  
-[https://spur-ai-live-chat-6s9a.onrender.com/](https://spur-ai-live-chat-ntxl.onrender.com/)
+[[https://spur-ai-live-chat-6s9a.onrender.com/](https://spur-ai-live-chat-ntxl.onrender.com/)](https://spur-ai-live-chat-ntxl.onrender.com)
 
 
 ---
